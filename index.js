@@ -18,8 +18,8 @@ class User {
 }
 const user1 = new User("Mirko", "Abozzi", 33, "Sardegna");
 const user2 = new User("Mario", "Rossi", 50, "Lazio");
-console.log(user1);
-console.log(user2);
+// console.log(user1);
+// console.log(user2);
 console.log(user1.ageCompare(user2));
 
 console.log("Esercizio 2");
@@ -32,8 +32,8 @@ class Pet {
     this.brees = breed;
   }
   ownerCompare(owner) {
-    if (this.ownerName === owner) {
-      return "i due animali hanno lo stsso padrone";
+    if (this.ownerName === owner.ownerName) {
+      return "gli animali hanno lo stsso padrone";
     } else {
       return "i padroni sono diversi";
     }
@@ -41,7 +41,9 @@ class Pet {
 }
 
 const form = document.getElementById("petForm");
-console.log(form);
+// console.log(form);
+let animalsArray = [];
+console.log(animalsArray);
 
 form.onsubmit = function (event) {
   event.preventDefault();
@@ -50,10 +52,19 @@ form.onsubmit = function (event) {
   const ownerName = document.getElementById("ownerName").value;
   const species = document.getElementById("species").value;
   const breed = document.getElementById("breed").value;
-  console.log(petName);
-  console.log(ownerName);
-  console.log(species);
-  console.log(breed);
+  //   console.log(petName);
+  //   console.log(ownerName);
+  //   console.log(species);
+  //   console.log(breed);
   const newPet = new Pet(petName, ownerName, species, breed);
   console.log(newPet);
+
+  animalsArray.forEach((element) => {
+    console.log(newPet.ownerCompare(element));
+  });
+
+  animalsArray.push(newPet);
+  console.log(animalsArray);
 };
+
+const listContainer = document.getElementById("list");
